@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('login');
     }
 
     /**
@@ -27,6 +27,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        session()->flash('success', 'Hallo ' . ucwords(auth()->user()->name) . ', Welcome to Catering System!');
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

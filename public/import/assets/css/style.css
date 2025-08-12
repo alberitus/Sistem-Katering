@@ -1,0 +1,13 @@
+.dropdown-item.active {
+    background-color: #0e246894;
+    font-weight: bold;
+    color: #fff !important;               /* buat teks utama jadi putih */
+}
+
+.dropdown-item.active i {
+    color: #fff !important;               /* buat icon jadi putih */
+}
+
+.dropdown-item.active small {
+    color: #e0e0e0 !important;            /* buat category jadi abu terang */
+}
