@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\master;
 
-use App\Models\customer;
+use App\Models\User;
+use App\Models\employees;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class EmployeesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +15,11 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'customer' => customer::count(),
+            'employees' => employees::all(),
+            'users' => User::all(),
         ];
-        return view('index', $data);
+        return view('master.employees.index', $data);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -31,13 +33,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->all();
+
+        $employees = employees::create($requestData);
+
+        return redirect()->route('employees.index')->with('success', 'Employees has been successfully added.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(employees $employees)
     {
         //
     }
@@ -45,7 +51,7 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(employees $employees)
     {
         //
     }
@@ -53,7 +59,7 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, employees $employees)
     {
         //
     }
@@ -61,7 +67,7 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(employees $employees)
     {
         //
     }
