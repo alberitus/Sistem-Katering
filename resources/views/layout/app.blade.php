@@ -22,6 +22,7 @@
     <link href="{{ asset('import/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('import/assets/css/select2/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('import/assets/css/select2/select2-bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('import/assets/css/select2/select2-bootstrap4.min.css') }}" rel="stylesheet" />
 
     <!-- Custom styles -->
     <link href="{{ asset('import/assets/css/style.css') }}" rel="stylesheet" />
@@ -210,7 +211,7 @@
                     dropdownParent: parentModal.length ? parentModal : $('body'),
                     placeholder: $(this).data('placeholder') || 'Select an option',
                     width: '100%',
-                    theme: 'bootstrap',
+                    theme: 'bootstrap4',
                     allowClear: false,
                     dropdownAutoWidth: true,
                     dropdownCssClass: isMultiple ? 'multi-column' : ''
@@ -248,6 +249,7 @@
             });
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

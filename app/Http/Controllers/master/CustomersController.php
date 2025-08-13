@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\master;
 
+use App\Http\Controllers\Controller;
 use App\Models\customer;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,9 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            'customer' => customer::count(),
+            'customers' => customer::all(),
         ];
-        return view('index', $data);
+        return view('master.customer.index', $data);
     }
 
     /**
@@ -31,13 +32,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->all();
+
+        $customer = customer::create($requestData);
+
+        return redirect()->route('customer.index')->with('success', 'Customer has been successfully added.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
         //
     }
@@ -45,7 +50,7 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
         //
     }
@@ -53,7 +58,7 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
     }
@@ -61,7 +66,7 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
         //
     }

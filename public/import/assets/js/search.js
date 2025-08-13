@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: 'Master'
         },{
             title: 'Customer',
-            url: '/customers',
+            url: '/customer',
             icon: 'fas fa-fw fa-users',
             category: 'Master'
         },
